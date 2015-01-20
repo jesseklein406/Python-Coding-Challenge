@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Manage my todo list</title>
+    <meta author="Jesse Klein" />
+  </head>
+  <body>
+    <div>
+      <p>Add todo to list:
+        <input type="text" name="input" id="input" size="30" maxlength="60">
+        <input type="submit" name="add" id="submit" value="Add it">
+      </p>
+    </div>
+    <div id="list" style="width:30em">
+      <div class="item" style="background-color:#ccccff">
+	<p>My Todo list:</p>
+      </div>
+      <div class="item" style="background-color:#ccccff">
+	<p>Do taxes</p>
+      </div>
+      <div class="item" style="background-color:#ccccff">
+	<p>Buy new phone</p>
+      </div>
+      <div class="item" style="background-color:#ccccff">
+	<p>Buy new socks</p>
+      </div>
+      <div class="item" style="background-color:#ccccff">
+	<p>Buy a new car</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    var list = document.getElementById("list");
+    var items = document.getElementsByClassName("item");
+    var submit = document.getElementById("submit");
+    var form = document.getElementById("form");
+    var input = document.getElementById("input");
+    
+    for (var i = 1; i < items.length; i++) {
+      items[i].addEventListener("click", function() {
+        list.removeChild(this);
+      }, false);
+    }
+    
+    submit.addEventListener("click", function() {
+      var newItem = document.createElement("div");
+      var newItemText = document.createElement("p");
+      var newTextNode = document.createTextNode(input.value);
+      newItem.setAttribute("class", "item");
+      newItem.setAttribute("style", "background:#ccccff");
+      newItemText.appendChild(newTextNode);
+      newItem.appendChild(newItemText);
+      list.appendChild(newItem);
+      newItem.addEventListener("click", function() {
+        list.removeChild(this);
+      }, false);
+    }, false);
+  </script>
+</html>

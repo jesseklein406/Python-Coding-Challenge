@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Emails home page</title>
+  </head>
+  <body>
+    <h3>Enter an email address to add or delete from the subscription list</h3>
+    <form action="" method="post">{% csrf_token %}
+      <p>Name:<input type="text" name="name" /></p>
+      <p>Email:<input type="text" name="email" /></p>
+      <input type="submit" value="Add it/Delete it" />
+    </form>
+    <div id="emails">
+      {% for email in emails %}
+      <p style="background-color:#ccccff">{{ email.person.name }}  {{ email.email }}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
+
