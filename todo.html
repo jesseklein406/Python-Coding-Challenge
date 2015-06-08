@@ -1,8 +1,9 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Manage my todo list</title>
-    <meta author="Jesse Klein" />
+    <meta author="Jesse Klein">
   </head>
   <body>
     <div>
@@ -13,19 +14,19 @@
     </div>
     <div id="list" style="width:30em">
       <div class="item" style="background-color:#ccccff">
-	<p>My Todo list:</p>
+	      <p>My Todo list:</p>
       </div>
       <div class="item" style="background-color:#ccccff">
-	<p>Do taxes</p>
+	      <p>Do taxes</p>
       </div>
       <div class="item" style="background-color:#ccccff">
-	<p>Buy new phone</p>
+	      <p>Buy new phone</p>
       </div>
       <div class="item" style="background-color:#ccccff">
-	<p>Buy new socks</p>
+	      <p>Buy new socks</p>
       </div>
       <div class="item" style="background-color:#ccccff">
-	<p>Buy a new car</p>
+	      <p>Buy a new car</p>
       </div>
     </div>
   </body>
@@ -33,13 +34,14 @@
     var list = document.getElementById("list");
     var items = document.getElementsByClassName("item");
     var submit = document.getElementById("submit");
-    var form = document.getElementById("form");
     var input = document.getElementById("input");
     
+    var removeItem = function() {
+      list.removeChild(this);
+    };
+
     for (var i = 1; i < items.length; i++) {
-      items[i].addEventListener("click", function() {
-        list.removeChild(this);
-      }, false);
+      items[i].addEventListener("click", removeItem, false);
     }
     
     submit.addEventListener("click", function() {
@@ -51,9 +53,7 @@
       newItemText.appendChild(newTextNode);
       newItem.appendChild(newItemText);
       list.appendChild(newItem);
-      newItem.addEventListener("click", function() {
-        list.removeChild(this);
-      }, false);
+      newItem.addEventListener("click", removeItem, false);
     }, false);
   </script>
 </html>
